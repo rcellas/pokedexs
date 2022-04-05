@@ -1,0 +1,13 @@
+nav{
+    height: 100px;
+    padding: 20px;
+    background-color: red;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    img{
+        width: 100px;
+    }
+}
+
