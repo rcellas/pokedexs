@@ -3,6 +3,8 @@ import React from "react";
 import "./Navbar.scss";
 
 const Navbar = () => {
+  const redHeart = "❤️️";
+  const blackHeart = "❤";
   return (
     <nav className="flex items-center justify-between flex-wrap bg-red-700 p-6">
       <div className="flex items-center flex-shrink-0 text-white mr-6">
@@ -42,7 +44,7 @@ const Navbar = () => {
           </a>
         </div>
       </div>
-        <div>❤</div>
+      <button className="cardFavorite">{redHeart}{100}</button>
     </nav>
   );
 };
