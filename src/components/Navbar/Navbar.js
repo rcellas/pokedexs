@@ -1,10 +1,16 @@
-import React from "react";
+import React,{useContext} from "react";
 // import logo from '../img/logo.png'
+import FavoriteContext from "../../context/favoritePokemon";
 import "./Navbar.scss";
+
 
 const Navbar = () => {
   const redHeart = "❤️️";
   const blackHeart = "❤";
+
+  const {favPokemon}= useContext(FavoriteContext);
+  console.log(favPokemon);
+
   return (
     <nav className="flex items-center justify-between flex-wrap bg-red-700 p-6">
       <div className="flex items-center flex-shrink-0 text-white mr-6">
@@ -44,7 +50,7 @@ const Navbar = () => {
           </a>
         </div>
       </div>
-      <button className="cardFavorite">{redHeart}{100}</button>
+      <button className="cardFavorite">{redHeart}{favPokemon.length}</button>
     </nav>
   );
 };
