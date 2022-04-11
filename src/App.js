@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import { getPokemons, getPokemonsData, searchPokemon } from "./api";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { getPokemons, getPokemonsData, searchPokemon,favoritePokemon } from "./api";
 import Navbar from "./components/Navbar/Navbar";
 import SearchBar from "./components/SearchBar/SearchBar";
 import Pokedex from "./components/Pokedex/Pokedex";
@@ -12,6 +13,7 @@ function App() {
   const [total, setTotal] = useState();
   const [loading, setLoading] = useState(true);
   const [favorite, setFavorite] = useState([]);
+  const [updatedFav, setUpdateFav] = useState([]);
   const [notFound, setNotFound] = useState(false);
   const [searching, setSearching] = useState(false);
 
@@ -51,14 +53,18 @@ function App() {
     }
   }, [page]);
 
-  const updateFavoritePokemons = (pokemon) => {
+  const updateFavoritePokemons = async (pokemon) => {
+    const result = await favoritePokemon(pokemon);
     const updated = [...favorite];
-    const isFavorite = favorite.indexOf(pokemon);
+    const update = [...updatedFav]
+    const isFavorite = favorite.indexOf(result.name);
     if (isFavorite >= 0) {
       updated.splice(isFavorite, 1);
     } else {
-      updated.push(pokemon);
+      update.push(result)
+      updated.push(result.name);
     }
+    setUpdateFav(update);
     setFavorite(updated);
     window.localStorage.setItem(localStorageKey, JSON.stringify(updated));
   };
@@ -96,7 +102,7 @@ function App() {
       }}
     >
       <div>
-        <Navbar />
+        <Navbar updatedFav={updatedFav}/>
         <div className="container mx-auto p-6">
           <SearchBar
             onSearch={onSearch}

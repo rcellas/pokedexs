@@ -4,7 +4,7 @@ import FavoriteContext from "../../context/favoritePokemon";
 import "./Navbar.scss";
 
 
-const Navbar = () => {
+const Navbar = (props) => {
   const redHeart = "❤️️";
   const blackHeart = "❤";
 

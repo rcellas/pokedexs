@@ -17,9 +17,6 @@ const SearchBar = (props) => {
   const handleClick = async (e) => {
     setSearch(e.target.value);
     onSearch(search);
-    // if (e.target.value.length === '' || null) {
-      // updateFavoritePokemons(search);
-    // }
   };
 
   return (
