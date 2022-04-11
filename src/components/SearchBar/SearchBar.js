@@ -2,18 +2,24 @@ import React, { useState } from "react";
 import { searchPokemon } from "../../api";
 import "./SearchBar";
 
-const SearchBar = () => {
+const SearchBar = (props) => {
+  const { onSearch} = props;
   const [search, setSearch] = useState("");
-  const [pokemon, setPokemon] = useState({});
 
   const onChange = (e) => {
+    console.log("e", e.target.value);
     setSearch(e.target.value);
+    if (e.target.value.length === 0) {
+      onSearch(null);
+    }
   };
 
   const handleClick = async (e) => {
-    const data = await searchPokemon(search);
-    // console.log("d", data.sprites.front_default);
-    setPokemon(data);
+    setSearch(e.target.value);
+    onSearch(search);
+    // if (e.target.value.length === '' || null) {
+      // updateFavoritePokemons(search);
+    // }
   };
 
   return (
@@ -46,12 +52,6 @@ const SearchBar = () => {
           </svg>
         </span>
       </button>
-
-      <div>
-        <p>{pokemon.name}</p>
-        <p>Peso:{pokemon.weight}</p>
-        {/* <img src={pokemon.sprites.front_default} alt={pokemon.name} title={pokemon.name}/> */}
-      </div>
     </div>
   );
 };

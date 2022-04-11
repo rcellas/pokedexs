@@ -5,8 +5,6 @@ import "./PokemonFile.scss";
 const Pokemon = (props) => {
   const { pokemon } = props;
 
-  console.log(pokemon.name);
-
   const {favPokemon, updateFavoritePokemons}= useContext(FavoriteContext);
 
   const redHeart = "❤️️";
