@@ -1,17 +1,13 @@
-import React, { useContext,useEffect} from "react";
+import React, { useContext } from "react";
 import PokemonFile from "../components/PokemonFile/PokemonFile";
 import FavoriteContext from "../context/favoritePokemon";
 
-function Favorites(props) {
-
-  const { favPokemon, favHeartPokemon } = useContext(FavoriteContext);
-
-  console.log('favContext',favPokemon);
+function Favorites() {
+  const { favPokemon} = useContext(FavoriteContext);
   return (
     <div>
-      <div className="pokedex-grid">
+      <div className="pokedex-grid mt-4">
         {favPokemon.map((pokemon, idx) => {
-          console.log('pokemon',idx);
           return <PokemonFile pokemon={pokemon} key={pokemon.id} />;
         })}
       </div>

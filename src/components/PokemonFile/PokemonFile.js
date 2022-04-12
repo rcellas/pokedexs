@@ -4,33 +4,23 @@ import "./PokemonFile.scss";
 import { removePokemonData } from "../../api";
 
 const Pokemon = (props) => {
-  const { pokemon,handleRemoveItem } = props;
+  const { pokemon, handleRemoveItem } = props;
 
-  const [deletePokemon, setDeletePokemon] = useState([]);
-
-  const { favPokemon, updateFavoritePokemons } =
-    useContext(FavoriteContext);
-
-  console.log('aaa',favPokemon);
+  const { favPokemon, updateFavoritePokemons } = useContext(FavoriteContext);
 
   const redHeart = "❤️️";
   const blackHeart = "❤";
 
-  const heart = favPokemon.includes(pokemon.heart) && pokemon.heart === 0 ? redHeart : blackHeart;
+  const heart =
+    favPokemon.includes(pokemon.heart) && pokemon.heart === true
+      ? redHeart
+      : blackHeart;
 
-  console.log('pokemon',pokemon.heart);
+  // console.log("pokemon", pokemon.heart);
   const clickHeart = (e) => {
     e.preventDefault();
     updateFavoritePokemons(pokemon.name);
   };
-
-  // const removePokemon= async (e) =>{
-  //   const name = e.target.getAttribute("name");
-  //   const result = await removePokemonData(pokemon.filter(p => p.name === name));
-  //   // setItems(currentItems => currentItems.filter((item, index) => index !== i));
-  //   // const name = e.target.getAttribute("name")
-  //   // setDeletePokemon(pokemon.filter(p => p.name !== name));
-  // }
 
   return (
     <div className="pokemonCard">
@@ -56,10 +46,18 @@ const Pokemon = (props) => {
               );
             })}
           </div>
-          <button className="cardFavorite" onClick={clickHeart}>
+          <button className="cardFavorite btn btn-light" onClick={clickHeart}>
             {heart}
           </button>
-          <button name={pokemon.name} onClick={handleRemoveItem}>Delete</button>
+          {window.location.pathname !== "/favoritos" ? (
+            <button
+              name={pokemon.name}
+              onClick={handleRemoveItem}
+              className="btn btn-danger"
+            >
+              Delete
+            </button>
+          ) : null}
         </div>
       </div>
     </div>

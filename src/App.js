@@ -9,11 +9,9 @@ import { FavoriteProvider } from "./context/favoritePokemon";
 import {useLocalStorageData, useLocalStorageDataHeart} from './customHooks/useLocalStorage';
 
 function App() {
-  const [favorite, setFavorite] = useLocalStorageDataHeart('favorite_heart_pokemons', []);
   const [updatedFav, setUpdateFav] = useLocalStorageData('favorite_pokemons', []);
 
   const updateFavoritePokemons = (pokemon) => {
-    console.log('pokemon',pokemon);
     setUpdateFav(pokemon)
   };
 
@@ -22,17 +20,15 @@ function App() {
       <FavoriteProvider
         value={{
           favPokemon: updatedFav,
-          favHeartPokemon:favorite,
           updateFavoritePokemons: updateFavoritePokemons,
         }}
       >
         <div>
-          <Navbar updatedFav={updatedFav} />
-
-          <div className="container mx-auto p-6">
+          <Navbar/>
+          <div className="container">
             <Routes>
               <Route path="/" element={<ExplanationApp />} />
-              <Route path="/inicio" element={<Home />} />
+              <Route path="/buscador" element={<Home  updateFavoritePokemons={updateFavoritePokemons}/>} />
               <Route path="/favoritos" element={<Favorites />} />
             </Routes>
           </div>

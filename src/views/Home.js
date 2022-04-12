@@ -1,21 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { getPokemons, getPokemonsData, searchPokemon,favoritePokemon } from "../api";
+import { getPokemons, getPokemonsData, searchPokemon } from "../api";
 import SearchBar from "../components/SearchBar/SearchBar";
 import Pokedex from "../components/Pokedex/Pokedex";
 
 function Home(props) {
-  console.log("props", props);
-  const { localStorageKeyHeart,localStorageKey } = props;
+  const { updateFavoritePokemons } = props;
   const [pokemons, setPokemon] = useState([]);
-
   const [page, setPage] = useState(0);
   const [total, setTotal] = useState();
   const [loading, setLoading] = useState(true);
-  const [favorite, setFavorite] = useState([]);
-  const [updatedFav, setUpdateFav] = useState([]);
   const [notFound, setNotFound] = useState(false);
   const [searching, setSearching] = useState(false);
-  const [list, updateList] = useState();
 
   const fetchPokemon = async () => {
     try {
@@ -26,10 +21,8 @@ function Home(props) {
       });
       const results = await Promise.all(promises);
       results.map((poke)=>{
-        poke.heart=1;
-        return false;
+        poke.heart=false;
       })
-      console.log("results", results);
       setPokemon(results);
       setTotal(Math.ceil(data.count / 25));
       setLoading(false);
@@ -45,11 +38,7 @@ function Home(props) {
     }
   }, [page]);
 
-  const handleRemoveItem = (e) => {
-    const name = e.target.getAttribute("name")
-     setPokemon(pokemons.filter(pokemon => pokemon.name !== name));
-   };
-
+  // search pokemon by name
   const onSearch = async (pokemon) => {
     if (!pokemon) {
       return fetchPokemon();
@@ -57,28 +46,26 @@ function Home(props) {
     setLoading(true);
     setNotFound(false);
     setSearching(true);
-    const result = await searchPokemon(pokemon);
-    const result2 = await favoritePokemon(pokemon);
-    console.log('a',result2)
+    const result = await searchPokemon(pokemon.toLowerCase());
     if (!result) {
       setNotFound(true);
       setLoading(false);
       return;
     } else {
       setPokemon([result]);
+      updateFavoritePokemons(pokemon)
       setPage(0);
       setTotal(1);
-      const updated = [...favorite];
-      const update=[...updatedFav];
-      update.push(result2)
-      updated.push(pokemon);
-      setFavorite(updated);
-      window.localStorage.setItem(localStorageKey, JSON.stringify(update));
-      window.localStorage.setItem(localStorageKeyHeart, JSON.stringify(updated));
     }
     setLoading(false);
     setSearching(false);
   };
+
+  // function remove pokemon in list
+  const handleRemoveItem = (e) => {
+    const name = e.target.getAttribute("name")
+     setPokemon(pokemons.filter(pokemon => pokemon.name !== name));
+   };
   return (
     <div className="container mx-auto p-6">
       <SearchBar onSearch={onSearch} />
