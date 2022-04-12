@@ -70,8 +70,7 @@ function Home(props) {
     <div className="container mx-auto p-6">
       <SearchBar onSearch={onSearch} />
       {notFound ? (
-        // añadir componente de not found
-        <div>El pokemon que buscas no existe</div>
+        <div className="mt-4">El pokemon que buscas no existe</div>
       ) : (
         <Pokedex
           loading={loading}

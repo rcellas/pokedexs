@@ -16,14 +16,13 @@ const Pokemon = (props) => {
       ? redHeart
       : blackHeart;
 
-  // console.log("pokemon", pokemon.heart);
   const clickHeart = (e) => {
     e.preventDefault();
     updateFavoritePokemons(pokemon.name);
   };
 
   return (
-    <div className="pokemonCard">
+    <div className="pokemonCard col-md-4 col-12">
       <div className="conteinerImg">
         <img
           src={pokemon.sprites.front_default}

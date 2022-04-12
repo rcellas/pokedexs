@@ -1,8 +1,7 @@
 import React from "react";
 import "./Pagination.scss";
 
-const Pagination = (props) => {
-  console.log(props);
+const Pagination = (props) => {;
   const { onLeftClick, onRightClick, page, totalPages } = props;
   return (
     <nav aria-label="Page navigation example">
