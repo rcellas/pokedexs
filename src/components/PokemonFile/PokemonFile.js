@@ -1,20 +1,33 @@
-import React,{useContext} from "react";
+import React, { useState, useContext } from "react";
 import FavoriteContext from "../../context/favoritePokemon";
 import "./PokemonFile.scss";
+import { removePokemonData } from "../../api";
 
 const Pokemon = (props) => {
   const { pokemon } = props;
 
-  const {favPokemon, updateFavoritePokemons}= useContext(FavoriteContext);
+  const [deletePokemon, setDeletePokemon] = useState(pokemon);
+
+  const { favPokemon, updateFavoritePokemons } =
+    useContext(FavoriteContext);
+
+  console.log('aaa',favPokemon);
 
   const redHeart = "❤️️";
   const blackHeart = "❤";
 
-  const heart = favPokemon.includes(pokemon.name) ? redHeart : blackHeart;
-  
-  const clickHeart=(e)=>{
+  const heart = favPokemon.includes(pokemon.heart) && pokemon.heart === 0 ? redHeart : blackHeart;
+
+  console.log('pokemon',pokemon.heart);
+  const clickHeart = (e) => {
     e.preventDefault();
     updateFavoritePokemons(pokemon.name);
+  };
+
+  const removePokemon=(e) =>{
+    // console.log('pokemon',pokemon);
+    const name = e.target.getAttribute("name")
+    setDeletePokemon(pokemon.filter(p => p.name !== name));
   }
 
   return (
@@ -44,6 +57,7 @@ const Pokemon = (props) => {
           <button className="cardFavorite" onClick={clickHeart}>
             {heart}
           </button>
+          <button onClick={()=>removePokemon(pokemon.name)}>Delete</button>
         </div>
       </div>
     </div>

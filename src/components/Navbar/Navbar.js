@@ -1,15 +1,19 @@
-import React,{useContext} from "react";
+import React, { useContext } from "react";
 // import logo from '../img/logo.png'
+import { Link } from "react-router-dom";
 import FavoriteContext from "../../context/favoritePokemon";
 import "./Navbar.scss";
 
-
 const Navbar = (props) => {
+  console.log("props", props);
+
+  const{updateFav}=props;
   const redHeart = "❤️️";
   const blackHeart = "❤";
 
-  const {favPokemon}= useContext(FavoriteContext);
-  console.log(favPokemon);
+  const { favHeartPokemon } = useContext(FavoriteContext);
+
+  const heart = favHeartPokemon.includes(props.name) ? redHeart : blackHeart;
 
   return (
     <nav className="flex items-center justify-between flex-wrap bg-red-700 p-6">
@@ -30,12 +34,7 @@ const Navbar = (props) => {
       </div>
       <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
         <div className="text-base">
-          <a
-            href="#responsive-header"
-            className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
-          >
-            Docs
-          </a>
+          <Link to={{ pathname: `/favoritos` }}>Favoritos</Link>
           <a
             href="#responsive-header"
             className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
@@ -50,7 +49,10 @@ const Navbar = (props) => {
           </a>
         </div>
       </div>
-      <button className="cardFavorite">{redHeart}{favPokemon.length}</button>
+      <button className="cardFavorite">
+        {heart}
+        {favHeartPokemon.length}
+      </button>
     </nav>
   );
 };

@@ -3,7 +3,7 @@ import { searchPokemon } from "../../api";
 import "./SearchBar";
 
 const SearchBar = (props) => {
-  const { onSearch} = props;
+  const {onSearch} = props;
   const [search, setSearch] = useState("");
 
   const onChange = (e) => {
@@ -20,18 +20,18 @@ const SearchBar = (props) => {
   };
 
   return (
-    <div class="flex border-grey-light border w-96">
+    <div className="flex border-grey-light border w-96">
       <input
-        class="w-full rounded ml-1"
+        className="w-full rounded ml-1"
         type="text"
         placeholder="Buscar Pokemon"
         onChange={onChange}
       />
       <button
-        class="bg-grey-lightest border-grey border-l shadow hover:bg-grey-lightest"
+        className="bg-grey-lightest border-grey border-l shadow hover:bg-grey-lightest"
         onClick={handleClick}
       >
-        <span class="w-auto flex justify-end items-center text-grey p-2 hover:text-grey-darkest">
+        <span className="w-auto flex justify-end items-center text-grey p-2 hover:text-grey-darkest">
           <svg
             aria-hidden="true"
             focusable="false"
