@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+# Pokedex
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Pokedex para añadir pokemons favoritos, buscarlos o eliminarlos.
 
-## Available Scripts
+## Stack tecnológico
 
-In the project directory, you can run:
+- [React](https://es.reactjs.org/)
+- [Hooks](https://es.reactjs.org/docs/hooks-intro.html)
+- [Boostrap](https://getbootstrap.com/)
+- [Sass](https://sass-lang.com/)
+- [React Router Dom](https://v5.reactrouter.com/web/guides/quick-start)
+- [PokeApi](https://pokeapi.co/)
 
-### `npm start`
+### Cómo ver la app
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Lo primero de todo es hacer un git clone del proyecto. Lo puedes realizar por terminal copiando el link que aparece en el botón clone (arriba del repositorio) y añadiendo git clone más el link dentro de terminal.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Una vez hecho esto deberás meterte dentro de la carpeta del proyecto, en esta ocasión pokedexs, poner la línea de comandos npm i o npm install. Esto hará que se instale todo lo necesario dentro del proyecto con la ayuda de package.json. Una vez instaladas las dependecias, para hacerlo correr en tu ordenador deber hacer un npm start.
 
-### `npm test`
+### Arquitectura
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+El proyecto está realizado con React, ya que es una librería bastante ágil para realizar este tipo de proyectos.
 
-### `npm run build`
+El proyecto se divide en las siguientes carpetas dentro src:
+  - Components: está carpeta portará los componentes principales de la app. Está división es tanto para facilitar como para trabajar bajo el sistema de Atomic Design.     Dentro de ella encontraremos: Navbar, Pagination,Pokedex, PokemonFile, SearchBar. Cada componente tendrá su propio archivo Sass si se ha visto necesario.
+  - Context: dentro de está carpeta se encuentra el archivo favoritePokemons, donde poderemos pasar los datos si pasarlos por props. [Más información sobre context         aquí](https://es.reactjs.org/docs/context.html)
+  - CustomHooks: aquí encontraremos un custom hook que nos permite poder almacenar los datos recogidos dentro de la app para que se mantengan en el localStorage. [Más información sobre los customs hooks](https://es.reactjs.org/docs/hooks-custom.html)
+  - Views: tendremos las vistas principales de la aplicación. Todas ellas están conectadas en el archivo App.js, para poder hacer las rutas dentro de la página. [Más información sobre React Router Dom](https://v5.reactrouter.com/web/guides/quick-start)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Funcionamiento App
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Esta aplicación te permite buscar, eliminar (opción que no es persistente) y agregar pokemons a tu lista de favoritos. En la pantalla de búsqueda, puedes buscar por nombre en minusculas o mayúsculas dandole click en la barra de búsqueda y al boton de BUSCAR. Justo en el instante que le des click, ese pokemon quedará en la lista
+de favoritos.
 
-### `npm run eject`
+Si quieres eliminarlo, solo dale click en el botón de ELIMINAR. Además está pantalla te permite buscar los pokemons de forma manual. Solo haciendo click en el corazón (no es visible que vea el corazón rojo para poder ver si se ha guardado en favoritos). Ni tampoco se puede quitar, ya que hay un bug que no permite que se elimine.
+          
+Nuestros pokemons favoritos están almacenados en el localStorage, por lo que si se cierra la aplicación, los pokemons no se perderán. A no ser que limpies por completo la chache. Puedes verlos en la pantalla de favoritos.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Cosas a tener en cuenta dentro del proyecto
+En la versión actual del proyecto se encuentran lo siguientes bugs
+ - Eliminar pokemon no es persistente.
+ - Hacer que el Pókemon deje de ser favorito y se elimine dentro del localStorage
+ - Botón corazón favoritos marcado/desmarcado.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Si se quiere comprobar la persistencia de los Pokemons (tanto para limpiar caché como para ver si lo devuelve correctamente) se deberá dar al botón derecho dentro de la web > inspeccionar > dentro de las pestañas ir a Aplicación > Almacenamiento> Almacenamiento local
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
