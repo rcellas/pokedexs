@@ -4,7 +4,7 @@ import PokemonFile from "../PokemonFile/PokemonFile";
 import "./Pokedex.scss";
 
 const Pokedex = (props) => {
-  const { pokemons, page, setPage, total, loading } = props;
+  const { pokemons, page, setPage, total, loading,handleRemoveItem } = props;
 
   const lastPages = () => {
     const nextPage = Math.max(page - 1, 0);
@@ -31,7 +31,7 @@ const Pokedex = (props) => {
       ) : (
         <div className="pokedex-grid">
           {pokemons.map((pokemon, idx) => {
-            return <PokemonFile pokemon={pokemon} key={pokemon.name} />;
+            return <PokemonFile pokemon={pokemon} key={pokemon.name} handleRemoveItem={handleRemoveItem}/>;
           })}
         </div>
       )}

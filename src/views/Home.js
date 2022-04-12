@@ -15,6 +15,7 @@ function Home(props) {
   const [updatedFav, setUpdateFav] = useState([]);
   const [notFound, setNotFound] = useState(false);
   const [searching, setSearching] = useState(false);
+  const [list, updateList] = useState();
 
   const fetchPokemon = async () => {
     try {
@@ -43,6 +44,11 @@ function Home(props) {
       fetchPokemon();
     }
   }, [page]);
+
+  const handleRemoveItem = (e) => {
+    const name = e.target.getAttribute("name")
+     setPokemon(pokemons.filter(pokemon => pokemon.name !== name));
+   };
 
   const onSearch = async (pokemon) => {
     if (!pokemon) {
@@ -83,6 +89,7 @@ function Home(props) {
         <Pokedex
           loading={loading}
           pokemons={pokemons}
+          handleRemoveItem={handleRemoveItem}
           total={total}
           page={page}
           setPage={setPage}

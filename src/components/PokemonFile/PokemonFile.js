@@ -4,9 +4,9 @@ import "./PokemonFile.scss";
 import { removePokemonData } from "../../api";
 
 const Pokemon = (props) => {
-  const { pokemon } = props;
+  const { pokemon,handleRemoveItem } = props;
 
-  const [deletePokemon, setDeletePokemon] = useState(pokemon);
+  const [deletePokemon, setDeletePokemon] = useState([]);
 
   const { favPokemon, updateFavoritePokemons } =
     useContext(FavoriteContext);
@@ -24,11 +24,13 @@ const Pokemon = (props) => {
     updateFavoritePokemons(pokemon.name);
   };
 
-  const removePokemon=(e) =>{
-    // console.log('pokemon',pokemon);
-    const name = e.target.getAttribute("name")
-    setDeletePokemon(pokemon.filter(p => p.name !== name));
-  }
+  // const removePokemon= async (e) =>{
+  //   const name = e.target.getAttribute("name");
+  //   const result = await removePokemonData(pokemon.filter(p => p.name === name));
+  //   // setItems(currentItems => currentItems.filter((item, index) => index !== i));
+  //   // const name = e.target.getAttribute("name")
+  //   // setDeletePokemon(pokemon.filter(p => p.name !== name));
+  // }
 
   return (
     <div className="pokemonCard">
@@ -57,7 +59,7 @@ const Pokemon = (props) => {
           <button className="cardFavorite" onClick={clickHeart}>
             {heart}
           </button>
-          <button onClick={()=>removePokemon(pokemon.name)}>Delete</button>
+          <button name={pokemon.name} onClick={handleRemoveItem}>Delete</button>
         </div>
       </div>
     </div>
