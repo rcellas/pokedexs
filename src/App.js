@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Home from "./views/Home";
 import Favorites from "./views/Favorites";
 import ExplanationApp from "./views/ExplanationApp";
 import Navbar from "./components/Navbar/Navbar";
 import { FavoriteProvider } from "./context/favoritePokemon";
-import {useLocalStorageData, useLocalStorageDataHeart} from './customHooks/useLocalStorage';
+import {useLocalStorageData} from './customHooks/useLocalStorage';
 
 function App() {
   const [updatedFav, setUpdateFav] = useLocalStorageData('favorite_pokemons', []);

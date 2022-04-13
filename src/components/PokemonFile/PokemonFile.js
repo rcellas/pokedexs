@@ -1,7 +1,6 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import FavoriteContext from "../../context/favoritePokemon";
 import "./PokemonFile.scss";
-import { removePokemonData } from "../../api";
 
 const Pokemon = (props) => {
   const { pokemon, handleRemoveItem } = props;

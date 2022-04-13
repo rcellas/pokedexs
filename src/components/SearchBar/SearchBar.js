@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { searchPokemon } from "../../api";
 import "./SearchBar";
 
 const SearchBar = (props) => {
@@ -20,9 +19,9 @@ const SearchBar = (props) => {
 
   return (
     <div className="d-flex mt-4">
-        <input class="form-control " type="search" placeholder="Buscar Pokemon"
+        <input className="form-control " type="search" placeholder="Buscar Pokemon"
         onChange={onChange} aria-label="Search" />
-        <button class="btn btn-outline-success" onClick={handleClick}>Search</button>
+        <button className="btn btn-outline-success" onClick={handleClick}>Search</button>
     </div>
   );
 };
