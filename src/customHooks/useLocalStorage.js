@@ -30,7 +30,8 @@ export function useLocalStorageData(key, initialValue) {
     } else {
       //si existe lo pasas a false
       newFav.heart = false;
-      update.splice(update.indexOf(newFav), 1);
+      // elimina el pokemon de la lista de favoritos
+      update.splice(index, 1);
       setUpdateFav(update);
       setStoredValue(update);
       window.localStorage.setItem(key, JSON.stringify(update));
