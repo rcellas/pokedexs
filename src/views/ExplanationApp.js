@@ -22,9 +22,9 @@ function ExplanationApp() {
           <br />
           Si quieres eliminarlo, solo dale click en el botón de ELIMINAR. Además
           está pantalla te permite buscar los pokemons de forma manual. Solo
-          haciendo click en el corazón (no es visible que vea el corazón rojo
-          para poder ver si se ha guardado en favoritos). Ni tampoco se puede
-          quitar, ya que hay un bug que no permite que se elimine.
+          haciendo click en el corazón. Permite eliminar a los pokemons dentro
+          de favoritos excepto el primero, ya que sino elimina todo el resto de
+          favoritos.
           <br />
           <br />
           Nuestros pokemons favoritos están almacenados en el localStorage, por
@@ -34,7 +34,11 @@ function ExplanationApp() {
           <br />
           <br />
           En este proceso de desarrollo, la desarrolladora no ha ganado ningún
-          gimnasio Pokemón. Puedes ver el código completo en el <a href="https://github.com/rcellas/pokedexs" target="_blank">repositorio</a>.
+          gimnasio Pokemón. Puedes ver el código completo en el{" "}
+          <a href="https://github.com/rcellas/pokedexs" target="_blank">
+            repositorio
+          </a>
+          .
         </p>
         <div className="d-grid gap-2 d-sm-flex justify-content-sm-center">
           <Link
