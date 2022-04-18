@@ -15,12 +15,17 @@ function App() {
     setUpdateFav(pokemon)
   };
 
+  const updateHeartPokemon = (pokemon) => {
+    setUpdateFav(pokemon)
+  };
+
   return (
     <Router>
       <FavoriteProvider
         value={{
           favPokemon: updatedFav,
           updateFavoritePokemons: updateFavoritePokemons,
+          updateHearts: updateHeartPokemon,
         }}
       >
         <div>

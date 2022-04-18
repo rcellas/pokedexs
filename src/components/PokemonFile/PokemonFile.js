@@ -10,10 +10,9 @@ const Pokemon = (props) => {
   const redHeart = "❤️️";
   const blackHeart = "❤";
 
-  const heart =
-    favPokemon.includes(pokemon.heart) && pokemon.heart === true
-      ? redHeart
-      : blackHeart;
+  const heart = favPokemon.find((fav) => fav.id === pokemon.id)
+    ? redHeart
+    : blackHeart;
 
   const clickHeart = (e) => {
     e.preventDefault();
