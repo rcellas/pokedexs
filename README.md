@@ -17,6 +17,8 @@ Lo primero de todo es hacer un git clone del proyecto. Lo puedes realizar por te
 
 Una vez hecho esto deberás meterte dentro de la carpeta del proyecto, en esta ocasión pokedexs, poner la línea de comandos npm i o npm install. Esto hará que se instale todo lo necesario dentro del proyecto con la ayuda de package.json. Una vez instaladas las dependecias, para hacerlo correr en tu ordenador deber hacer un npm start.
 
+También puedes visitar la página de el ejercicio dando click [aquí](https://pokedex-rocio.netlify.app)
+
 ### Arquitectura
 
 El proyecto está realizado con React, ya que es una librería bastante ágil para realizar este tipo de proyectos.
