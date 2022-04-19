@@ -35,14 +35,13 @@ El proyecto se divide en las siguientes carpetas dentro src:
 Esta aplicación te permite buscar, eliminar (opción que no es persistente) y agregar pokemons a tu lista de favoritos. En la pantalla de búsqueda, puedes buscar por nombre en minusculas o mayúsculas dandole click en la barra de búsqueda y al boton de BUSCAR. Justo en el instante que le des click, ese pokemon quedará en la lista
 de favoritos.
 
-Si quieres eliminarlo, solo dale click en el botón de ELIMINAR. Además está pantalla te permite buscar los pokemons de forma manual. Solo haciendo click en el corazón. Permite eliminar a los pokemons dentro de favoritos excepto el primero, ya que sino elimina todo el resto de favoritos.
+Si quieres eliminarlo, solo dale click en el botón de ELIMINAR. Además está pantalla te permite buscar los pokemons de forma manual y guardarlos en favoritos a través de dar click en el corazón. También puedes eliminar el pokemon como favorito volviendo a dar click al corazon o buscandolo por el search.
           
 Nuestros pokemons favoritos están almacenados en el localStorage, por lo que si se cierra la aplicación, los pokemons no se perderán. A no ser que limpies por completo la chache. Puedes verlos en la pantalla de favoritos.
 
 ### Cosas a tener en cuenta dentro del proyecto
 En la versión actual del proyecto se encuentran lo siguientes bugs
  - Eliminar pokemon no es persistente.
- - Permitir que el primer pokemon agregado a la lista de favoritos no elimine al resto de favoritos
 
 Si se quiere comprobar la persistencia de los Pokemons (tanto para limpiar caché como para ver si lo devuelve correctamente) se deberá dar al botón derecho dentro de la web > inspeccionar > dentro de las pestañas ir a Aplicación > Almacenamiento> Almacenamiento local
 
